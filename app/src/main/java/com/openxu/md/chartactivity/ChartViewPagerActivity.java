@@ -3,6 +3,7 @@ package com.openxu.md.chartactivity;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
+
 import com.google.android.material.tabs.TabLayout;
 import com.openxu.md.R;
 import com.openxu.md.databinding.ActivityChartBinding;
@@ -13,7 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-public class ChartActivity extends AppCompatActivity {
+public class ChartViewPagerActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

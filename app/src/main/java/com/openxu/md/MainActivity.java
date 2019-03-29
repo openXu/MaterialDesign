@@ -12,7 +12,8 @@ import com.openxu.md.adapter.CommandItemDecoration;
 import com.openxu.md.adapter.CommandRecyclerAdapter;
 import com.openxu.md.adapter.ViewHolder;
 import com.openxu.md.bean.MainItem;
-import com.openxu.md.chartactivity.ChartActivity;
+import com.openxu.md.chartactivity.ChartActivity1;
+import com.openxu.md.chartactivity.ChartViewPagerActivity;
 import com.openxu.md.databinding.ActivityMainBinding;
 
 import java.util.ArrayList;
@@ -44,7 +45,9 @@ public class MainActivity extends AppCompatActivity {
         list.add(new MainItem(1, "单个控件交互"));
         list.add(new MainItem(2, "多个控件交互"));
         list.add(new MainItem(3, "嵌套滚动"));
-        list.add(new MainItem(4, "图表事件"));
+        list.add(new MainItem(4, "图表事件1"));
+        list.add(new MainItem(5, "图表事件2"));
+        list.add(new MainItem(6, "图表事件3"));
 
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
         binding.recyclerView.addItemDecoration(new CommandItemDecoration(this, VERTICAL_LIST, Color.RED,1));
@@ -67,7 +70,13 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(new Intent(MainActivity.this, NestedScrollActivity.class));
                         break;
                     case 4:
-                        startActivity(new Intent(MainActivity.this, ChartActivity.class));
+                        startActivity(new Intent(MainActivity.this, ChartActivity1.class));
+                        break;
+                    case 5:
+                        startActivity(new Intent(MainActivity.this, ChartActivity1.class));
+                        break;
+                    case 6:
+                        startActivity(new Intent(MainActivity.this, ChartViewPagerActivity.class));
                         break;
                 }
             }

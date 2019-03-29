@@ -176,27 +176,29 @@ public abstract class BaseChart extends View implements NestedScrollingChild {
                 moveY = (int)(event.getY() - lastTouchPoint.y);
                 FLog.i("--->滑动事件移动距离：("+moveX+", "+moveY+")");
                 //1、给父控件先处理，会调用NestedScrollingParent.onNestedPreScroll()
-               /* if (dispatchNestedPreScroll(moveX, moveY, consumed, mScrollOffset)) {
+                /*if (dispatchNestedPreScroll(moveX, moveY, consumed, mScrollOffset)) {
                     moveX -= consumed[0];
                     moveY -= consumed[1];
-                    FLog.i("2、父控件消耗后剩余：("+moveX+", "+moveY+")");
+                    FLog.i("1、父控件消耗后剩余：("+moveX+", "+moveY+")");
                 }*/
                 //2、自己处理
                 consumeBySelf(moveX, moveY, consumedBySelf);
                 FLog.i("2、子控件自己消耗("+consumedBySelf[0]+", "+consumedBySelf[1]+")");
+                //💗：更新事件，防止出现抖动
+                //event.offsetLocation(consumedBySelf[0], consumedBySelf[1]);
                 //3、自己处理之后再交给父控件处理, 会调用NestedScrollingParent.onNestedScroll()
                 if(dispatchNestedScroll(-consumedBySelf[0], -consumedBySelf[1],
                     consumedBySelf[0]-moveX, consumedBySelf[1]-moveY, mScrollOffset)){
                     FLog.i("3、父控件处理剩余的滚动：("+mScrollOffset[0]+", "+mScrollOffset[1]+")");
                     //💗：更新事件，防止出现抖动
-                    event.offsetLocation(mScrollOffset[0], -mScrollOffset[1]);
+                    event.offsetLocation(consumedBySelf[0]-mScrollOffset[0], -mScrollOffset[1]);
                 }
 
                 lastTouchPoint.x = (int)event.getX();
                 lastTouchPoint.y = (int)event.getY();
                 onTouchMoved(lastTouchPoint);
-                invalidate();
-                result = true;
+
+                invalidate();  result = true;
                 break;
             case MotionEvent.ACTION_POINTER_DOWN:
             case MotionEvent.ACTION_UP:

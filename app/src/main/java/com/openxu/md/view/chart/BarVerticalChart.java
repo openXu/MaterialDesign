@@ -435,7 +435,7 @@ public class BarVerticalChart extends BaseChart{
                 touchAnim.cancel();
         } else if (leftStartPointX + mMoveLen + dx >= leftStartPointX) {
             //最左侧 dx>0
-            consumedBySelf[0] = minLeftPointX - leftStartPointX - mMoveLen;
+            consumedBySelf[0] = -mMoveLen;
             mMoveLen = 0;
             if (null != touchAnim && touchAnim.isRunning())
                 touchAnim.cancel();

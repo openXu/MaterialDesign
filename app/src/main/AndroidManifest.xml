@@ -22,7 +22,8 @@
         <activity android:name=".OneViewActivity" />
         <activity android:name=".MoreViewActivity" />
         <activity android:name=".NestedScrollActivity"/>
-        <activity android:name=".chartactivity.ChartActivity"/>
+        <activity android:name=".chartactivity.ChartActivity1"/>
+        <activity android:name=".chartactivity.ChartViewPagerActivity"/>
     </application>
 
 </manifest>
